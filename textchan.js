@@ -2,6 +2,7 @@
  * Licensed under the MIT License
  * (c) 2017 Trigex
  */
+#!/usr/bin/env nodejs
 
 var express     = require("express"),
     app         = express(),
