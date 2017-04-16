@@ -11,11 +11,5 @@
     "staffTrip": "#staff_trip",
     "closed": "false",
     "closedReason": "Maintenance!",
-    "fourofourMessage": "（　‘д‘） It appears there's been a 404 error!",
-    "mysql": {
-        "host": "localhost",
-        "user": "root",
-        "pass": "pass",
-        "db": "textchan"
-    }
+    "fourofourMessage": "（　‘д‘） It appears there's been a 404 error!"
 }
