@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+/* Colors */
+:root {
+--post-bg: #14151F;
+--alt-bg: #1d1e2a;
+--header-bg: #1a1b26;
+--main-text: #ccc;
+--secondary-text: #74857C;
+--green-text: #35B214;
+--quote: #5273a8;
+--mod-trip: red;
+--banned: red;
+}
+
+/* Links */
+a, a:visited {
+    color: var(--secondary-text);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--secondary-text);
+    text-decoration: underline;
+}
+
+body, html {
+    font-family: 'Lato', sans-serif;
+    background: var(--alt-bg);
+    background-repeat: repeat;
+    background-position: center center;
+    margin: auto;
+    color: var(--main-text);
+}
+
+.header {
+    padding: 5px;
+}
+
+.boardBanner {
+    font-size: 50px;
+    text-align: center;
+    color: var(--main-text);
+}
+
+.quote {
+    color: var(--green-text);
+}
+
+.quotelink {
+    color: var(--secondary-text);
+}
+
+.mod-trip {
+    color: var(--mod-trip);
+}
+
+.threadInfo {
+    text-align: center;
+    font-size: 16px;
+}
+
+tr, th {
+    padding: 5px;
+}
+
+.name {
+    float: left;
+}
+
+.date {
+    float: left;
+    margin-left: 10px;
+}
+
+.postnumber {
+    float: left;
+    margin-left: 10px;
+}
+
+.trip {
+    float: left;
+    margin-left: 5px;
+}
+
+.post {
+    width: 80%;
+    border: var(--post-bg);
+    padding: 10px;
+}
+
+.postHeader {
+    width: auto;
+    padding: 5px;
+}
+
+.content {
+    word-wrap: break-word;
+    padding: 5px;
+}
+
+.banned {
+    float: left;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    font-size: 20px;
+    color: red;
+}

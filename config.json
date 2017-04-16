@@ -1,0 +1,21 @@
+{
+    "name": "Textchan",
+    "description": "A 2ch like textboard",
+    "greeting": "Welcome to Textchan! This is a lightweight textboard I've developed, please enjoy!",
+    "owner": "Owner",
+    "version": "1.0",
+    "banMessage": "You were banned!",
+    "publicBanMessage": "User was banned for this post!",
+    "postName": "Anonymous",
+    "staffPassword": "staff_pass",
+    "staffTrip": "#staff_trip",
+    "closed": "false",
+    "closedReason": "Maintenance!",
+    "fourofourMessage": "（　‘д‘） It appears there's been a 404 error!",
+    "mysql": {
+        "host": "localhost",
+        "user": "root",
+        "pass": "pass",
+        "db": "textchan"
+    }
+}

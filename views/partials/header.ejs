@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Textchan</title>
+        <meta name="description" content="<%= config.description %>">
+        <meta name="author" content="<%= config.owner %>">
+        <link rel="stylesheet" href="/css/style.css">
+        <script src="/js/jquery-3.2.1.min.js"></script>
+    </head>
+    <body>
+    <%/* check if site is closed, if it is, don't render rest of page and render closed message */%>
+    <% if(config.closed === "true") { %>
+        <center><h1><%= config.closedReason %></h1></center>
+    <% } else { %>
+        <div id="header">
+            <center><a href="/"><h1><%= config['name'] %></h1></a></center>
+        </div>
+    <% } %>

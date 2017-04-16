@@ -1,0 +1,38 @@
+<% include partials/header %>
+<center><a href="/<%= code %>"><h1 class="center">/<%= code %>/ - <%= name %></h1></a></center>
+<center>
+    <form action="/post/create" method="POST" id="makepost">
+        <h1>Reply to thread</h1>
+        <table id="postForm" class="postForm">
+            <input type='hidden' name='threadId' value="<%= threadId %>" />
+            <tr><td>Username</td><td><input name='name' type='text' value='' /></td></tr>
+            <tr><td>Tripcode</td><td><input name='trip' type='text' value='' /></td></tr>
+            <tr><td>Comment</td><td><textarea name='content' rows='6' cols='48'></textarea></td></tr>
+            <tr><td><input type='submit' name='submit' value='Post'></td></tr>
+        </table>
+    </form>
+</center>
+<div class="thread">
+    <% posts.forEach(function(post){ %>
+        <div id="<%= post.postId %>" class="post">
+            <div class="postHeader">
+                <% if(post.name) { %>
+                    <div class="name"><%= post.name %></div>
+                <% } else { %>
+                    <div class="name"><%= config.postName %></div>
+                <% } %>
+                <div class="date"><%= post.creation %></div>
+                <div class="postnumber"><%= post.postId %></div>
+                <% if(post.trip) { %>
+                    <div class="trip">!<%= tripcode(post.trip) %></div>
+                <% } %>
+            </div>
+            <br />
+            <div class="content">
+                <%- parseContent(post.content); %>
+            </div>
+        </div>
+    <% }); %>
+</div>
+<center><input id="refresh" type="checkbox">Update</center>
+<% include partials/footer %>

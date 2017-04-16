@@ -1,0 +1,20 @@
+<% include partials/header %>
+    <center>
+        <table>
+            <tr>
+                <th>Board</th>
+                <th>Description</th>
+            </tr>
+                <% boards.forEach(function(board){ %>
+                    <tr>
+                        <th>
+                            <a href="<%= board.code %>">/<%= board.code %>/ - <%= board.name %>
+                        </th>
+                        <th>
+                            <%= board.description %>
+                        </th>
+                    </tr>
+                <% }); %>
+        </table>
+    </center>
+<% include partials/footer %>
