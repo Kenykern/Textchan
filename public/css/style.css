@@ -106,3 +106,8 @@ tr, th {
     font-size: 20px;
     color: red;
 }
+
+.banner {
+    width: 25%;
+    height: auto;
+}
