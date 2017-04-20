@@ -2,7 +2,7 @@
     "name": "Textchan",
     "description": "A 2ch like textboard",
     "greeting": "Welcome to Textchan! This is a lightweight textboard I've developed, please enjoy!",
-    "owner": "Owner",
+    "owner": "Trigex",
     "version": "1.0",
     "banMessage": "You were banned!",
     "publicBanMessage": "User was banned for this post!",

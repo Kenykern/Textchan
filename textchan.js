@@ -1,4 +1,3 @@
-#!/usr/bin/env nodejs
 /* Textchan
  * Licensed under the MIT License
  * (c) 2017 Trigex
