@@ -111,3 +111,7 @@ tr, th {
     width: 25%;
     height: auto;
 }
+
+.red {
+    color: red;
+}
