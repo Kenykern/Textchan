@@ -6,3 +6,6 @@ To run Textchan, make sure you have NodeJS and MongoDB installed, then go into t
 of the Textchan instance, run `npm install`, then run `node textchan.js`.
 
 You also may change `config.json` to how you wish
+
+## Creating a Board
+To create a board, run `mongo` , enter `use textchan`, then use the following template to create the board: `db.boards.insert({code: "a", name: "Anime", description: "Talk about anime"})`
