@@ -201,7 +201,7 @@ app.post("/thread/create", function(req, res){
                 }
                 else {
                     if(config.webhookEnabled) {
-                        postWebhook("@everyone, There was a new thread at " + config.siteUrl + "/thread/" + newThread._id + " titled \"" + threadName + "\".").then(res => {
+                        postWebhook("There was a new thread at " + config.siteUrl + "/thread/" + newThread._id + " titled \"" + threadName + "\".").then(res => {
                         }).catch(err => {
                             console.log(err);
                         });
@@ -238,7 +238,7 @@ app.post("/post/create", function(req, res){
                     console.log(err);
                 } else {
                     if(config.webhookEnabled) {
-                        postWebhook("@everyone, There was a new post at " + config.siteUrl + "/thread/" + threadId + " in the thread \"" + thread[0]["name"] + "\".").then(res => {
+                        postWebhook("There was a new post at " + config.siteUrl + "/thread/" + threadId + " in the thread \"" + thread[0]["name"] + "\".").then(res => {
                         }).catch(err => {
                             console.log(err);
                         });
