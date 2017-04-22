@@ -21,7 +21,8 @@
 .post {
     margin-top: 10px;
     padding: 5px 0 5px 3px;
-    background-color: #252323
+    background-color: #252323;
+    word-wrap: break-word;
 }
 
 .content {

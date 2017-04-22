@@ -2,7 +2,6 @@
     <div class="row">
     <% boards.forEach(function(board){ %>
         <div class="board col-lg-4 col-sm-6">
-            <div class="thumbnail"><img src="<%= board.image %>"></div>
             <div class="caption">
                 <a href="/<%= board.code %>"<h3>/<%= board.code %>/ - <%= board.name %></h3></a>
                 <p><%= board.description %></p>
