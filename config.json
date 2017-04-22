@@ -9,7 +9,16 @@
     "postName": "Anonymous",
     "staffPassword": "staff_pass",
     "staffTrip": "#staff_trip",
+    "secret": "secretKey",
     "closed": "false",
     "closedReason": "Maintenance!",
-    "fourofourMessage": "（　‘д‘） It appears there's been a 404 error!"
+    "fourofourMessage": "（　‘д‘） It appears there's been a 404 error!",
+    "siteUrl": "http://example.com",
+    "webhookEnabled": false,
+    "webhookChannel": "channel_id",
+    "webhookUrl": "http://example.com/exampleWebhook",
+    "webhooksUser": {
+        "username": "Textbot",
+        "avatarUrl": "http://i.imgur.com/JCDkZ4E.png"
+    }
 }

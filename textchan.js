@@ -7,11 +7,17 @@ var express     = require("express"),
     app         = express(),
     fs          = require("fs"),
     mongoose    = require("mongoose"),
+    request     = require("request"),
+    promise     = require("bluebird");
     autoIncrement = require("mongoose-auto-increment"),
     bodyParser = require("body-parser"),
     tripcode    = require("tripcode"),
     timestamp   = require("time-stamp"),
+    cookieSession = require("cookie-session"),
     favicon     = require('serve-favicon');
+
+// config, set to config.json
+var config = require("./config.json");
 
 // database connection
 var con = mongoose.connect("mongodb://localhost/textchan");
@@ -31,16 +37,41 @@ app.set("view engine", "ejs");
 // serve favicon
 app.use(favicon(__dirname + '/public/img/favicon.ico'));
 
-// parse posts
+// get body of post request
 app.use(bodyParser.urlencoded({extended: true}));
 
-// config, set to config.json
-var config = require("./config.json");
+// set cookie session
+app.use(cookieSession({
+    name: "textchanCookie",
+    secret: config.secret,
+    maxAge: 24 * 60 * 60 * 1000
+}));
 
 // useful functions
 function parseContent(string) {
-    var parsed = string.replace(/<(?!br\s*\/?)[^>]+>/g, '').replace(/\[b\](.*?)\[\/b\]/g, "<b>$1</b>").replace(/\[i\](.*?)\[\/i\]/g, "<i>$1</i>").replace(/\[u\](.*?)\[\/u\]/g, "<u>$1</u>").replace(/\[url\=(.*?)\](.*?)\[\/url\]/g, "<a href='$1' rel='nofollow' title='$2 - $1'>$2</a>").replace(/\[url\](.*?)\[\/url\]/g, "<a href='$1' rel='nofollow' title='$1'>$1</a>").replace(/^.*(youtu.be|youtube.com\/embed\/|watch\?v=|\&v=)([^!<>@&#\/\s]*)/g, "<iframe style='width:425px;height:350px;' src='https://www.youtube.com/embed/$2' frameborder='0' allowfullscreen></iframe>").replace(/>>(.*[0-9])/g, "<a href='#$1'>>>$1</a>").replace(/^>(.*?)$/g, "<span class='quote'>>$1</span>").replace(/(?:\r\n|\r|\n)/g, "<br />");
+    var parsed = string.replace(/<(?!br\s*\/?)[^>]+>/g, '').replace(/\[b\](.*?)\[\/b\]/g, "<b>$1</b>").replace(/\[i\](.*?)\[\/i\]/g, "<i>$1</i>").replace(/\[u\](.*?)\[\/u\]/g, "<u>$1</u>").replace(/\[url\=(.*?)\](.*?)\[\/url\]/g, "<a href='$1' rel='nofollow' title='$2 - $1'>$2</a>").replace(/\[url\](.*?)\[\/url\]/g, "<a href='$1' rel='nofollow' title='$1'>$1</a>").replace(/^.*(youtu.be|youtube.com\/embed\/|watch\?v=|\&v=)([^!<>@&#\/\s]*)/g, "<iframe style='width:425px;height:350px;' src='https://www.youtube.com/embed/$2' frameborder='0' allowfullscreen></iframe>").replace(/>>\s*([0-9]+)/g, "<a href='#$1'>>>$1</a>").replace(/^>(.*?)$/g, "<span class='quote'>>$1</span>").replace(/(?:\r\n|\r|\n)/g, "<br />");
     return parsed;
+}
+
+function postWebhook(content) {
+    return new promise(fn);
+
+    function fn(resolve, reject) {
+        request({
+            method: 'POST',
+            url: config.webhookUrl,
+            json: {
+                "content": content,
+                "username": config.webhooksUser.username,
+                "avatar_url": config.webhooksUser.avatarUrl,
+                "channel_id": config.webhookChannel
+            }
+        }, function(err, res, body){
+            if(err) reject(err);
+
+            return resolve(res);
+        });
+    }
 }
 
 // index page
@@ -52,10 +83,16 @@ app.get("/", function(req, res){
     });
 });
 
-
+// error!
 app.get("/error", function(req, res){
     res.render("error", {config: config});
 });
+
+app.get("/staff", function(req, res){
+    res.render("staff", {config: config});
+});
+
+/* API */
 
 app.get("/api/thread/:id", function(req, res){
     var id = req.params.id;
@@ -68,7 +105,6 @@ app.get("/api/thread/:id", function(req, res){
             post.find({thread: id}, function(err, posts){
                 var threadPosts = "";
                 posts.forEach(function(post){
-                    console.log(post);
                     threadPosts += "<div id='" + post.postId + "' class='post'>";
                     threadPosts += "<div class='postHeader'>";
                     if(post.name) {
@@ -164,6 +200,13 @@ app.post("/thread/create", function(req, res){
                     console.log(err);
                 }
                 else {
+                    if(config.webhookEnabled) {
+                        postWebhook("@everyone, There was a new thread at " + config.siteUrl + "/thread/" + newThread._id + " titled \"" + threadName + "\".").then(res => {
+                        }).catch(err => {
+                            console.log(err);
+                        });
+                    }
+
                     res.redirect("/thread/" + newThread._id);
                 }
             });
@@ -176,6 +219,7 @@ app.post("/post/create", function(req, res){
     var trip = req.body.trip;
     var content = req.body.content;
     var threadId = req.body.threadId;
+    var code = req.body.code;
 
     var creation = timestamp("YYYY/MM/DD HH:mm");
 
@@ -193,6 +237,13 @@ app.post("/post/create", function(req, res){
                 if(err) {
                     console.log(err);
                 } else {
+                    if(config.webhookEnabled) {
+                        postWebhook("@everyone, There was a new post at " + config.siteUrl + "/thread/" + threadId + " in the thread \"" + thread[0]["name"] + "\".").then(res => {
+                        }).catch(err => {
+                            console.log(err);
+                        });
+                    }
+
                     res.redirect("/thread/" + threadId);
                 }
             });

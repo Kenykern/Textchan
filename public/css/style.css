@@ -1,67 +1,31 @@
-@import url('https://fonts.googleapis.com/css?family=Lato');
-
-/* Colors */
-:root {
---post-bg: #14151F;
---alt-bg: #1d1e2a;
---header-bg: #1a1b26;
---main-text: #ccc;
---secondary-text: #74857C;
---green-text: #35B214;
---quote: #5273a8;
---mod-trip: red;
---banned: red;
+.board a {
+	font-size: 1.5em;
 }
 
-/* Links */
-a, a:visited {
-    color: var(--secondary-text);
-    text-decoration: none;
+.board p {
+	word-wrap: break-word;
+	padding-top: 10px;
 }
 
-a:hover {
-    color: var(--secondary-text);
-    text-decoration: underline;
+.header-image {
+	padding-bottom: 15px;
 }
 
-body, html {
-    font-family: 'Lato', sans-serif;
-    background: var(--alt-bg);
-    background-repeat: repeat;
-    background-position: center center;
-    margin: auto;
-    color: var(--main-text);
+.post-form {
+	width: 50%;
 }
 
-.header {
-    padding: 5px;
+.threads {
 }
 
-.boardBanner {
-    font-size: 50px;
-    text-align: center;
-    color: var(--main-text);
+.post {
+    margin-top: 10px;
+    padding: 5px 0 5px 3px;
+    background-color: #252323
 }
 
-.quote {
-    color: var(--green-text);
-}
-
-.quotelink {
-    color: var(--secondary-text);
-}
-
-.mod-trip {
-    color: var(--mod-trip);
-}
-
-.threadInfo {
-    text-align: center;
-    font-size: 16px;
-}
-
-tr, th {
-    padding: 5px;
+.content {
+    margin-top: 15px;
 }
 
 .name {
@@ -81,37 +45,4 @@ tr, th {
 .trip {
     float: left;
     margin-left: 5px;
-}
-
-.post {
-    width: 80%;
-    border: var(--post-bg);
-    padding: 10px;
-}
-
-.postHeader {
-    width: auto;
-    padding: 5px;
-}
-
-.content {
-    word-wrap: break-word;
-    padding: 5px;
-}
-
-.banned {
-    float: left;
-    margin-left: 5px;
-    margin-bottom: 5px;
-    font-size: 20px;
-    color: red;
-}
-
-.banner {
-    width: 25%;
-    height: auto;
-}
-
-.red {
-    color: red;
 }

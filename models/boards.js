@@ -8,6 +8,7 @@ var mongoose = require("mongoose");
 var boardSchema = new mongoose.Schema({
     code: String,
     name: String,
+    image: String,
     description: String
 });
 

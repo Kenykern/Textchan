@@ -1,20 +1,13 @@
 <% include partials/header %>
-    <center>
-        <table>
-            <tr>
-                <th>Board</th>
-                <th>Description</th>
-            </tr>
-                <% boards.forEach(function(board){ %>
-                    <tr>
-                        <th>
-                            <a href="<%= board.code %>">/<%= board.code %>/ - <%= board.name %>
-                        </th>
-                        <th>
-                            <%= board.description %>
-                        </th>
-                    </tr>
-                <% }); %>
-        </table>
-    </center>
+    <div class="row">
+    <% boards.forEach(function(board){ %>
+        <div class="board col-lg-4 col-sm-6">
+            <div class="thumbnail"><img src="<%= board.image %>"></div>
+            <div class="caption">
+                <a href="/<%= board.code %>"<h3>/<%= board.code %>/ - <%= board.name %></h3></a>
+                <p><%= board.description %></p>
+            </div>
+        </div>
+    <% }); %>
+    </div>
 <% include partials/footer %>

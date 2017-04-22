@@ -1,24 +1,35 @@
 <% include partials/header %>
-<center><a href="/<%= code %>"><h1 class="center">/<%= code %>/ - <%= name %></h1></a></center>
-
-<center>
-    <form action="/thread/create" method="POST" id="makepost">
-        <h1>Create thread</h1>
-        <table id="postForm" class="postForm">
-            <input type='hidden' name='code' value="<%= code %>" />
-            <tr><td>Thread Name <span class="red">*</span></td><td><input name='threadName' type='text' value='' /></td></tr>
-            <tr><td>Username</td><td><input name='name' type='text' value='' /></td></tr>
-            <tr><td>Tripcode</td><td><input name='trip' type='text' value='' /></td></tr>
-            <tr><td>Comment <span class="red">*</span></td><td><textarea name='content' rows='6' cols='48'></textarea></td></tr>
-            <tr><td><input type='submit' name='submit' value='Post'></td></tr>
-        </table>
-    </form>
-</center>
-
+<a href="/<%= code %>"><h1 class="text-center">/<%= code %>/ - <%= name %></h1></a>
+    <h1 class="text-center">Create Thread</h1>
+    <br />
+    <div class="post-form center-block">
+        <form action="/thread/create" method="POST">
+            <input type='hidden' name='code' value="<%= code %>">
+            <div class="form-group">
+                <label for="threadName">Thread Name</label>
+                <input type="text" class="form-control" name="threadName" placeholder="Thread Name">
+            </div>
+            <div class="form-group">
+                <label for="name">Username</label>
+                <input type="text" class="form-control" name="name" placeholder="Username">
+            </div>
+            <div class="form-group">
+                <label for="trip">Tripcode</label>
+                <input type="text" class="form-control" name="trip" placeholder="Tripcode">
+            </div>
+            <div class="form-group">
+                <label for="content">Comment</label>
+                <textarea class="form-control" rows="6" name="content"></textarea>
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+    </div>
+    <br />
+    <div class="threads text-center">
 <% threads.forEach(function(thread){ %>
-    <center>
-        <h4><a href="/thread/<%= thread._id%>"><%= thread.name %></a></h4>
-    </center>
-    <center><h4>Created on <%= thread.creation %></h4></center>
+    <h4><a href="/thread/<%= thread._id%>"><%= thread.name %></a></h4>
+    <h4>Created on <%= thread.creation %></h4>
+    <br />
 <% }) %>
+    </div>
 <% include partials/footer %>
