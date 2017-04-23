@@ -11,10 +11,5 @@
         <script src="/js/push.min.js"></script>
     </head>
     <body>
-    <%/* check if site is closed, if it is, don't render rest of page and render closed message */%>
-    <% if(config.closed === "true") { %>
-        <h1><%= config.closedReason %></h1>
-    <% } else { %>
         <div class="container">
         <a href="/"><img class="center-block header-image img-responsive" src="/img/textchan.png"></a>
-    <% } %>

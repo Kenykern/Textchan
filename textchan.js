@@ -88,48 +88,6 @@ app.get("/error", function(req, res){
     res.render("error", {config: config});
 });
 
-app.get("/staff", function(req, res){
-    res.render("staff", {config: config});
-});
-
-/* API */
-
-app.get("/api/thread/:id", function(req, res){
-    var id = req.params.id;
-
-    // grab thread
-    thread.find({_id: id}, function(err, thread){
-        if(err) {
-            console.log(err);
-        } else if(thread.length != 0) {
-            post.find({thread: id}, function(err, posts){
-                var threadPosts = "";
-                posts.forEach(function(post){
-                    threadPosts += "<div id='" + post.postId + "' class='post'>";
-                    threadPosts += "<div class='postHeader'>";
-                    if(post.name) {
-                        threadPosts += "<div class='name'>" + post.name + "</div>";
-                    } else {
-                        threadPosts += "<div class='name'>" + config.postName + "</div>";
-                    }
-                    threadPosts += "<div class='date'>" + post.creation + "</div>";
-                    threadPosts += "<div class='postnumber'>" + post.postId + "</div>";
-                    if(post.trip) {
-                        threadPosts += "<div class='trip'>!" + tripcode(post.trip) + "</div>";
-                    }
-                    threadPosts += "</div>";
-                    threadPosts += "<br />";
-                    threadPosts += "<div class='content'>" + parseContent(post.content) + "</div>";
-                    threadPosts += "</div>";
-                });
-                res.send(threadPosts);
-            });
-        } else {
-            console.log("Error: Thread ID not found");
-        }
-    });
-});
-
 // board page
 app.get("/:board", function(req, res){
     var code = req.params.board;
@@ -165,6 +123,47 @@ app.get("/thread/:id", function(req, res){
             });
         } else {
             res.render("404", {config: config});
+        }
+    });
+});
+
+app.get("/staff", function(req, res){
+    res.render("staff", {config: config});
+});
+
+/* API */
+app.get("/api/thread/:id", function(req, res){
+    var id = req.params.id;
+
+    // grab thread
+    thread.find({_id: id}, function(err, thread){
+        if(err) {
+            console.log(err);
+        } else if(thread.length != 0) {
+            post.find({thread: id}, function(err, posts){
+                var threadPosts = "";
+                posts.forEach(function(post){
+                    threadPosts += "<div id='" + post.postId + "' class='post'>";
+                    threadPosts += "<div class='postHeader'>";
+                    if(post.name) {
+                        threadPosts += "<div class='name'>" + post.name + "</div>";
+                    } else {
+                        threadPosts += "<div class='name'>" + config.postName + "</div>";
+                    }
+                    threadPosts += "<div class='date'>" + post.creation + "</div>";
+                    threadPosts += "<div class='postnumber'>" + post.postId + "</div>";
+                    if(post.trip) {
+                        threadPosts += "<div class='trip'>!" + tripcode(post.trip) + "</div>";
+                    }
+                    threadPosts += "</div>";
+                    threadPosts += "<br />";
+                    threadPosts += "<div class='content'>" + parseContent(post.content) + "</div>";
+                    threadPosts += "</div>";
+                });
+                res.send(threadPosts);
+            });
+        } else {
+            console.log("Error: Thread ID not found");
         }
     });
 });
