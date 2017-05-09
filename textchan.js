@@ -204,7 +204,7 @@ app.post("/thread/create", function(req, res){
             var content = req.body.content;
             var code = req.body.code;
             var threadName = req.body.threadName;
-            var ip = req.connection.remoteAddress;
+            var ip = req.headers['x-forwarded-for'];
 
             // Check for any mistakes in post
             if(!threadName || !content) {
@@ -263,7 +263,7 @@ app.post("/post/create", function(req, res){
             var content = req.body.content;
             var threadId = req.body.threadId;
             var code = req.body.code;
-            var ip = req.connection.remoteAddress;
+            var ip = req.headers['x-forwarded-for'];
 
             var creation = timestamp("YYYY/MM/DD HH:mm");
 
