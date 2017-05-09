@@ -1,10 +1,14 @@
 .board a {
-	font-size: 1em;
+	font-size: 1.5em;
 }
 
 .board p {
 	word-wrap: break-word;
 	padding-top: 10px;
+}
+
+.threads a {
+	font-size: 1em;
 }
 
 .header-image {
