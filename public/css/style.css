@@ -1,5 +1,5 @@
 .board a {
-	font-size: 1.5em;
+	font-size: 1em;
 }
 
 .board p {
@@ -46,4 +46,14 @@
 .trip {
     float: left;
     margin-left: 5px;
+}
+
+#delete {
+	float: left;
+	margin-left: 10px;
+}
+
+#ban {
+	float: left;
+	margin-left: 10px;
 }

@@ -33,4 +33,14 @@ if($(".thread").length) {
             }
         }
     }, 5000);
+
+    console.log();
+
+    $("#delete").on("click", function(){
+        $.post("/admin/delete/post", {id: $(this).parent().find(".postnumber").text()});
+    });
+
+    $("#ban").on("click", function(){
+        console.log("implement this");
+    });
 }

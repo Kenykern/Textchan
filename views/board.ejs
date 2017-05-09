@@ -25,11 +25,15 @@
         </form>
     </div>
     <br />
-    <div class="threads text-center">
+    <div class="threads">
+    <div class="row">
 <% threads.forEach(function(thread){ %>
-    <h4><a href="/thread/<%= thread._id%>"><%= thread.name %></a></h4>
-    <h4>Created on <%= thread.creation %></h4>
-    <br />
+    <div class="board col-lg-4 col-sm-6">
+        <h4><a href="/thread/<%= thread._id%>"><%= thread.name %></a></h4>
+        <h4>Created on <%= thread.creation %></h4>
+    </div>
+    <br>
 <% }) %>
+    </div>
     </div>
 <% include partials/footer %>

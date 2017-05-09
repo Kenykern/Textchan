@@ -1,0 +1,138 @@
+<% include partials/header %>
+<h1>Boards</h1>
+<form class="well form-horizontal" action="/admin/create/board" method="POST">
+<fieldset>
+<legend>Create Board</legend>
+<div class="form-group">
+   <label class="col-md-4 control-label">Name</label>
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+      <span class="input-group-addon"></span>
+      <input name="name" placeholder="Name" class="form-control" type="text">
+      </div>
+   </div>
+</div>
+<div class="form-group">
+   <label class="col-md-4 control-label">Code</label>
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+      <span class="input-group-addon"></span>
+      <input name="code" placeholder="Code" class="form-control" type="text">
+      </div>
+   </div>
+</div>
+<div class="form-group">
+   <label class="col-md-4 control-label">Description</label>
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+      <span class="input-group-addon"></span>
+      <input name="description" placeholder="Description" class="form-control" type="text">
+      </div>
+   </div>
+</div>
+<!-- Button -->
+<div class="form-group">
+   <label class="col-md-4 control-label"></label>
+   <div class="col-md-4">
+      <button type="submit" class="btn btn-warning">Create Board</button>
+   </div>
+</div>
+</fieldset>
+</form>
+
+<form class="well form-horizontal" action="/admin/delete/board" method="POST">
+<fieldset>
+<legend>Delete Board</legend>
+<div class="form-group">
+   <label class="col-md-4 control-label">Code</label>
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+      <span class="input-group-addon"></span>
+      <input name="code" placeholder="Code" class="form-control" type="text">
+      </div>
+   </div>
+</div>
+<!-- Button -->
+<div class="form-group">
+   <label class="col-md-4 control-label"></label>
+   <div class="col-md-4">
+      <button type="submit" class="btn btn-warning">Delete Board</button>
+   </div>
+</div>
+</fieldset>
+</form>
+<br>
+
+<h1>Threads</h1>
+<form class="well form-horizontal" action="/admin/delete/thread" method="POST">
+<fieldset>
+<legend>Delete Board</legend>
+<div class="form-group">
+   <label class="col-md-4 control-label">Id</label>
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+      <span class="input-group-addon"></span>
+      <input name="id" placeholder="Id" class="form-control" type="text">
+      </div>
+   </div>
+</div>
+<!-- Button -->
+<div class="form-group">
+   <label class="col-md-4 control-label"></label>
+   <div class="col-md-4">
+      <button type="submit" class="btn btn-warning">Delete Thread</button>
+   </div>
+</div>
+</fieldset>
+</form>
+
+<br>
+
+<h1>IP</h1>
+<form class="well form-horizontal" action="/admin/ban/ip" method="POST">
+<fieldset>
+<legend>Ban IP</legend>
+<div class="form-group">
+   <label class="col-md-4 control-label">IP</label>
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+      <span class="input-group-addon"></span>
+      <input name="ip" placeholder="IP" class="form-control" type="text">
+      </div>
+   </div>
+</div>
+<!-- Button -->
+<div class="form-group">
+   <label class="col-md-4 control-label"></label>
+   <div class="col-md-4">
+      <button type="submit" class="btn btn-warning">Ban IP</button>
+   </div>
+</div>
+</fieldset>
+</form>
+
+<br>
+
+<h1>Posts</h1>
+<form class="well form-horizontal" action="/admin/delete/post" method="POST">
+<fieldset>
+<legend>Delete Post</legend>
+<div class="form-group">
+   <label class="col-md-4 control-label">Id</label>
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+      <span class="input-group-addon"></span>
+      <input name="id" placeholder="Id" class="form-control" type="text">
+      </div>
+   </div>
+</div>
+<!-- Button -->
+<div class="form-group">
+   <label class="col-md-4 control-label"></label>
+   <div class="col-md-4">
+      <button type="submit" class="btn btn-warning">Delete Post</button>
+   </div>
+</div>
+</fieldset>
+</form>
+<% include partials/footer %>

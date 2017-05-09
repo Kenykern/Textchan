@@ -1,0 +1,23 @@
+<% include partials/header %>
+<form class="well form-horizontal" action="/admin/login" method="POST" id="login">
+<fieldset>
+<legend>Login</legend>
+<div class="form-group">
+   <label class="col-md-4 control-label">Password</label>
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+      <span class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></span>
+      <input name="password" placeholder="Password" class="form-control" type="password">
+      </div>
+   </div>
+</div>
+<!-- Button -->
+<div class="form-group">
+   <label class="col-md-4 control-label"></label>
+   <div class="col-md-4">
+      <button type="submit" class="btn btn-warning">Login</button>
+   </div>
+</div>
+</fieldset>
+</form>
+<% include partials/footer %>

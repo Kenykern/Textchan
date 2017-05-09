@@ -33,6 +33,10 @@
                 <% if(post.trip) { %>
                     <div class="trip">!<%= tripcode(post.trip) %></div>
                 <% } %>
+                <% if(typeof admin != "undefined") { %>
+                    <div id="delete">Delete Post</div>
+                    <div id="ban">Ban User</div>
+                <% } %>
             </div>
             <br />
             <div class="content">
