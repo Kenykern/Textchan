@@ -52,6 +52,11 @@
     margin-left: 5px;
 }
 
+.ip {
+	float: left;
+	margin-left: 10px;
+}
+
 #delete {
 	float: left;
 	margin-left: 10px;

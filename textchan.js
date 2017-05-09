@@ -204,6 +204,7 @@ app.post("/thread/create", function(req, res){
             var content = req.body.content;
             var code = req.body.code;
             var threadName = req.body.threadName;
+            var ip = req.connection.remoteAddress;
 
             // Check for any mistakes in post
             if(!threadName || !content) {
@@ -224,7 +225,8 @@ app.post("/thread/create", function(req, res){
                         trip: trip,
                         content: content,
                         creation: creation,
-                        thread: newThread._id
+                        thread: newThread._id,
+                        ip: ip
                     }, function(err, post){
                         if(err) {
                             console.log(err);
@@ -260,6 +262,7 @@ app.post("/post/create", function(req, res){
             var content = req.body.content;
             var threadId = req.body.threadId;
             var code = req.body.code;
+            var ip = req.connection.remoteAddress;
 
             var creation = timestamp("YYYY/MM/DD HH:mm");
 
@@ -272,7 +275,8 @@ app.post("/post/create", function(req, res){
                         trip: trip,
                         content: content,
                         thread: threadId,
-                        creation: creation
+                        creation: creation,
+                        ip: ip
                     }, function(err, post){
                         if(err) {
                             console.log(err);

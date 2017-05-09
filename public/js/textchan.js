@@ -34,13 +34,17 @@ if($(".thread").length) {
         }
     }, 5000);
 
-    console.log();
-
     $("#delete").on("click", function(){
+        console.log("delete nigger");
         $.post("/admin/delete/post", {id: $(this).parent().find(".postnumber").text()});
     });
 
     $("#ban").on("click", function(){
-        console.log("implement this");
+        console.log("ban nigger");
+        $.post("/admin/ban/ip", {ip: $(this).parent().find(".ip").text()});
+    });
+
+    $("#delete-thread").on("click", function(){
+        $.post("/admin/delete/thread", {id: threadId});
     });
 }

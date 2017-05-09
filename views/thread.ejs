@@ -1,6 +1,9 @@
 <% include partials/header %>
 <a href="/<%= code %>"><h1 class="text-center">/<%= code %>/ - <%= name %></h1></a>
     <h1 class="text-center">Reply to thread</h1>
+    <% if(typeof admin != "undefined") { %>
+        <h1 id="delete-thread" class="text-center">Delete Thread</h1>
+    <% } %>
     <div class="post-form center-block">
         <form action="/post/create" method="POST">
             <input type='hidden' name='threadId' value="<%= threadId %>" />
@@ -34,6 +37,7 @@
                     <div class="trip">!<%= tripcode(post.trip) %></div>
                 <% } %>
                 <% if(typeof admin != "undefined") { %>
+                    <div class="ip"><%= post.ip %></div>
                     <div id="delete">Delete Post</div>
                     <div id="ban">Ban User</div>
                 <% } %>
