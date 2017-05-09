@@ -8,4 +8,6 @@ of the Textchan instance, run `npm install`, then run `node textchan.js`.
 You also may change `config.json` to how you wish
 
 ## Creating a Board
-To create a board, run `mongo` , enter `use textchan`, then use the following template to create the board: `db.boards.insert({code: "a", name: "Anime", description: "Talk about anime"})`
+To create a board, login to the admin panel at `http://yoururl/admin/login`, supply the password as specified in
+`config.json` as `staffPassword`, and you will be presented with the admin panel. From there, fill out the "Create Board"
+form with your wanted data.
