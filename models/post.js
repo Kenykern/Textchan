@@ -12,7 +12,8 @@ var postSchema = new mongoose.Schema({
     content: String,
     thread: [{type: mongoose.Schema.Types.ObjectId, ref: "Thread"}],
     creation: String,
-    ip: String
+    ip: String,
+    banned: Boolean
 });
 
 postSchema.plugin(autoIncrement.plugin, {model: "Post", field: "postId"});

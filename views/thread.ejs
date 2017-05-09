@@ -36,6 +36,9 @@
                 <% if(post.trip) { %>
                     <div class="trip">!<%= tripcode(post.trip) %></div>
                 <% } %>
+                <% if(post.banned) { %>
+                    <div class="banned"><%= config.publicBanMessage %></div>
+                <% } %>
                 <% if(typeof admin != "undefined") { %>
                     <div class="ip"><%= post.ip %></div>
                     <div id="delete">Delete Post</div>

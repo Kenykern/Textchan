@@ -35,13 +35,11 @@ if($(".thread").length) {
     }, 5000);
 
     $("#delete").on("click", function(){
-        console.log("delete nigger");
         $.post("/admin/delete/post", {id: $(this).parent().find(".postnumber").text()});
     });
 
     $("#ban").on("click", function(){
-        console.log("ban nigger");
-        $.post("/admin/ban/ip", {ip: $(this).parent().find(".ip").text()});
+        $.post("/admin/ban/ip/post", {ip: $(this).parent().find(".ip").text(), postId: $(this).parent().find(".postnumber").text()});
     });
 
     $("#delete-thread").on("click", function(){

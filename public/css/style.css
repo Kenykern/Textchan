@@ -57,6 +57,12 @@
 	margin-left: 10px;
 }
 
+.banned {
+	float: left;
+	margin-left: 10px;
+	color: red;
+}
+
 #delete {
 	float: left;
 	margin-left: 10px;

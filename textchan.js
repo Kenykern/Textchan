@@ -226,7 +226,8 @@ app.post("/thread/create", function(req, res){
                         content: content,
                         creation: creation,
                         thread: newThread._id,
-                        ip: ip
+                        ip: ip,
+                        banned: false
                     }, function(err, post){
                         if(err) {
                             console.log(err);
@@ -276,7 +277,8 @@ app.post("/post/create", function(req, res){
                         content: content,
                         thread: threadId,
                         creation: creation,
-                        ip: ip
+                        ip: ip,
+                        banned: false
                     }, function(err, post){
                         if(err) {
                             console.log(err);
@@ -390,6 +392,41 @@ app.post("/admin/ban/ip", function(req, res){
             }
 
             res.redirect("/");
+        });
+    } else {
+        res.redirect("/");
+    }
+});
+
+app.post("/admin/unban/ip", function(req, res){
+    if(req.session.admin === "true") {
+        var userIp = req.body.ip;
+        ip.find({ip: userIp}).remove().exec().then(function(){
+            res.redirect("/");
+        }).catch(err => {
+            if(err)
+                console.log(err);
+        });
+    } else {
+        res.redirect("/");
+    }
+});
+
+app.post("/admin/ban/ip/post", function(req, res){
+    if(req.session.admin === "true") {
+        var userIp = req.body.ip;
+        var postId = req.body.postId;
+        ip.create({ip: userIp}, function(err, ip){
+            if(err) {
+                console.log(err);
+            }
+
+            post.update({postId: postId}, {banned: true}, function(err, post){
+                if(err)
+                    console.log(err);
+
+                res.redirect("/");
+            });
         });
     } else {
         res.redirect("/");
