@@ -178,8 +178,13 @@ app.get("/api/thread/:id", function(req, res){
                     if(post.trip) {
                         threadPosts += "<div class='trip'>!" + tripcode(post.trip) + "</div>";
                     }
+                    if(post.banned) {
+                        threadPosts += "<div class='banned'>" + config.publicBanMessage + "</div>"
+                    }
                     if(req.session.admin) {
-                        threadPosts += "<div id='delete'>Delete Post</div><div id'ban'>Ban User</div>";
+                        threadPosts += "<div id='delete'>Delete Post</div>";
+                        threadPosts += "<div id'ban'>Ban User</div>";
+                        threadPosts += "<div class='ip'>" + post.ip + "</div>";
                     }
                     threadPosts += "</div>";
                     threadPosts += "<br />";
